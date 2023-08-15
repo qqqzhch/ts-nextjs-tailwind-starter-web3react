@@ -1,6 +1,8 @@
 import * as React from 'react';
 
-import TxList from '@/app/components/TxList';
+import TxList from '@/app/components/TxListClient';
+
+import txinfoType from '@/types/txinfo';
 
 /**
  * SVGR Support
@@ -16,7 +18,24 @@ import TxList from '@/app/components/TxList';
 /*
 background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 */
-export default function HomePage() {
+async function getData() {
+  const res = await fetch(
+    'https://express-hello-world-gamma.vercel.app/api/search/?txhash=0x46c9276d9563b44e8bb671f6aeebe47a4cfb7bf78c1731a38f257f07f510d288'
+  );
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json() as unknown as txinfoType;
+}
+
+export default async function HomePage() {
+  const data = await getData();
+
   return (
     <main className='min-h-screen '>
       <section className=' body-font bg-white text-gray-600'>
@@ -29,7 +48,7 @@ export default function HomePage() {
               Latest 10 out of 775 latest transactions
             </p>
           </div>
-          <TxList></TxList>
+          <TxList data={data}></TxList>
         </div>
       </section>
     </main>

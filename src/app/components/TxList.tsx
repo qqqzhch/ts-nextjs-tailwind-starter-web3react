@@ -3,12 +3,14 @@ import {
   ShieldCheckIcon,
   XCircleIcon,
 } from '@heroicons/react/24/solid';
-
-import TokenAndChain from '@/app/components/TokenAndChain';
+import { FC } from 'react';
 
 //shield-check
+import TokenAndChain from '@/app/components/TokenAndChain';
 
-const TxList = () => {
+import txinfoType from '@/types/txinfo';
+
+const TxList: FC<{ data: txinfoType }> = ({ data }) => {
   return (
     <div className='relative overflow-x-auto shadow-md sm:rounded-lg'>
       <table className='w-full text-left text-sm text-gray-500 dark:text-gray-400'>
@@ -35,7 +37,7 @@ const TxList = () => {
               className=' flex flex-col whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white'
             >
               <a href='#' className=' text-base  font-medium text-black'>
-                0x62423267...835b906270
+                0x62423267...({data.data.status})
               </a>
               <div className=' text-sm text-gray-400'>
                 Tue, 15 Aug 2023 01:16:24 UTC

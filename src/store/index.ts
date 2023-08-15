@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { iconslice } from '@/store/icon-slice';
+import { iconslice } from '@/store/features/icon-slice';
 
 // config the store
 const store = configureStore({
