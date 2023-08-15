@@ -6,7 +6,9 @@ import '@/styles/globals.css';
 import { Header } from '@/components/header/index';
 import UnderlineLink from '@/components/links/UnderlineLink';
 
+import Search from '@/app/components/Search';
 import { siteConfig } from '@/constant/config';
+
 // !STARTERCONF Change these default meta
 // !STARTERCONF Look at @/constant/config to change them
 export const metadata: Metadata = {
@@ -57,13 +59,16 @@ export default function RootLayout({
     <html>
       <body>
         <Header></Header>
+        <section className=' to-[#c2e9fb mb-14 bg-gradient-to-b from-[#a1c4fd]'>
+          <div className='layout relative flex   flex-col  py-12'>
+            <Search></Search>
+          </div>
+        </section>
 
         {children}
         <footer className='bottom-2 text-gray-700'>
           © {new Date().getFullYear()} By{' '}
-          <UnderlineLink href='https://theodorusclarence.com?ref=tsnextstarter'>
-            Theodorus Clarence
-          </UnderlineLink>
+          <UnderlineLink href=''>Value Router</UnderlineLink>
         </footer>
       </body>
     </html>
