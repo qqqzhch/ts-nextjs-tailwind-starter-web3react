@@ -6,6 +6,8 @@ import '@/styles/globals.css';
 import { Header } from '@/components/header/index';
 import UnderlineLink from '@/components/links/UnderlineLink';
 
+import ProviderStore from '@/store/Provider';
+
 import Search from '@/app/components/Search';
 import { siteConfig } from '@/constant/config';
 
@@ -64,8 +66,7 @@ export default function RootLayout({
             <Search></Search>
           </div>
         </section>
-
-        {children}
+        <ProviderStore>{children}</ProviderStore>
         <footer className='bottom-2 text-gray-700'>
           © {new Date().getFullYear()} By{' '}
           <UnderlineLink href=''>Value Router</UnderlineLink>
