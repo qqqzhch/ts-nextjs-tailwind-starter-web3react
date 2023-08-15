@@ -26,7 +26,7 @@ const TxCard: FC<props> = ({ isFrom }) => {
         </p>
       </div>
       <div className='my-2'>
-        <p>Sender Address</p>
+        <p>{isFrom ? 'Sender' : 'Receiver'} Address</p>
         <p className=' inline-flex  items-center space-x-2 text-black'>
           <span>0xc5adb53f058cb166a9e0...</span>
           <ArrowTopRightOnSquareIcon className=' inline-block h-4 w-4 text-blue-600'></ArrowTopRightOnSquareIcon>
@@ -35,7 +35,7 @@ const TxCard: FC<props> = ({ isFrom }) => {
       </div>
       <div className=' flex flex-row justify-between'>
         <div className='my-2  w-1/2'>
-          <p>Token Sent</p>
+          <p>Token {isFrom ? 'Sent' : 'Received'}</p>
           <p className=' space-x-1  text-black'>
             <Image
               className=' inline-block'
