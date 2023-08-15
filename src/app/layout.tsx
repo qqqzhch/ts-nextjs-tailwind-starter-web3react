@@ -2,11 +2,11 @@ import { Metadata } from 'next';
 import * as React from 'react';
 
 import '@/styles/globals.css';
-// !STARTERCONF This is for demo purposes, remove @/styles/colors.css import immediately
-import '@/styles/colors.css';
+
+import { Header } from '@/components/header/index';
+import UnderlineLink from '@/components/links/UnderlineLink';
 
 import { siteConfig } from '@/constant/config';
-
 // !STARTERCONF Change these default meta
 // !STARTERCONF Look at @/constant/config to change them
 export const metadata: Metadata = {
@@ -55,7 +55,17 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body>{children}</body>
+      <body>
+        <Header></Header>
+
+        {children}
+        <footer className='bottom-2 text-gray-700'>
+          © {new Date().getFullYear()} By{' '}
+          <UnderlineLink href='https://theodorusclarence.com?ref=tsnextstarter'>
+            Theodorus Clarence
+          </UnderlineLink>
+        </footer>
+      </body>
     </html>
   );
 }

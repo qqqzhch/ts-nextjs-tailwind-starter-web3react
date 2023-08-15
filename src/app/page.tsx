@@ -1,12 +1,9 @@
 'use client';
 
-import Head from 'next/head';
 import * as React from 'react';
 
-import ArrowLink from '@/components/links/ArrowLink';
-import ButtonLink from '@/components/links/ButtonLink';
-import UnderlineLink from '@/components/links/UnderlineLink';
-import UnstyledLink from '@/components/links/UnstyledLink';
+import Search from '@/app/components/Search';
+import TxList from '@/app/components/TxList';
 
 /**
  * SVGR Support
@@ -15,56 +12,35 @@ import UnstyledLink from '@/components/links/UnstyledLink';
  * You can override the next-env if the type is important to you
  * @see https://stackoverflow.com/questions/68103844/how-to-override-next-js-svg-module-declaration
  */
-import Logo from '~/svg/Logo.svg';
 
 // !STARTERCONF -> Select !STARTERCONF and CMD + SHIFT + F
 // Before you begin editing, follow all comments with `STARTERCONF`,
 // to customize the default configuration.
-
+/*
+background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+*/
 export default function HomePage() {
   return (
-    <main>
-      <Head>
-        <title>Hi</title>
-      </Head>
-      <section className='bg-white'>
-        <div className='layout relative flex min-h-screen flex-col items-center justify-center py-12 text-center'>
-          <Logo className='w-16' />
-          <h1 className='mt-4'>Next.js + Tailwind CSS + TypeScript Starter</h1>
-          <p className='mt-2 text-sm text-gray-800'>
-            A starter for Next.js, Tailwind CSS, and TypeScript with Absolute
-            Import, Seo, Link component, pre-configured with Husky{' '}
-          </p>
-          <p className='mt-2 text-sm text-gray-700'>
-            <ArrowLink href='https://github.com/theodorusclarence/ts-nextjs-tailwind-starter'>
-              See the repository
-            </ArrowLink>
-          </p>
-
-          <ButtonLink className='mt-6' href='/components' variant='light'>
-            See all components
-          </ButtonLink>
-
-          <UnstyledLink
-            href='https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Ftheodorusclarence%2Fts-nextjs-tailwind-starter'
-            className='mt-4'
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              width='92'
-              height='32'
-              src='https://vercel.com/button'
-              alt='Deploy with Vercel'
-            />
-          </UnstyledLink>
-
-          <footer className='absolute bottom-2 text-gray-700'>
-            © {new Date().getFullYear()} By{' '}
-            <UnderlineLink href='https://theodorusclarence.com?ref=tsnextstarter'>
-              Theodorus Clarence
-            </UnderlineLink>
-          </footer>
+    <main className='min-h-screen '>
+      <section className=' to-[#c2e9fb mb-14 bg-gradient-to-b from-[#a1c4fd]'>
+        <div className='layout relative flex   flex-col  py-12'>
+          <Search></Search>
         </div>
+      </section>
+      <section className=' bg-white'>
+        <section className='body-font text-gray-600'>
+          <div className='container mx-auto px-5 '>
+            <div className=' mb-10 flex w-full flex-col '>
+              <h1 className='title-font mb-1 text-xl font-medium text-gray-900 sm:text-2xl'>
+                Latest Transactions
+              </h1>
+              <p className=' text-base leading-relaxed lg:w-2/3'>
+                Latest 10 out of 775 latest transactions
+              </p>
+            </div>
+            <TxList></TxList>
+          </div>
+        </section>
       </section>
     </main>
   );
