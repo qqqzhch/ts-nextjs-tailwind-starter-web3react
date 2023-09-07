@@ -3,10 +3,10 @@ import Image from 'next/image';
 import { FC } from 'react';
 import 'flowbite';
 
+import Connectwallet from '../connectwallet/index';
+
 import Mobilelogo from '~/images/smalllogo.png';
 import Logo from '~/images/ValueRouter.png';
-
-// import Connectwallet from '../connectwallet'
 // import ChainList from '../chainList/index'
 // import Noticeinfo from '../noticeinfo'
 
@@ -33,8 +33,8 @@ export const Header: FC = () => {
           </a>
           <div className='flex  flex-1  items-center justify-end  lg:order-2'>
             {/* <Noticeinfo></Noticeinfo>
-            <ChainList></ChainList>
-            <Connectwallet></Connectwallet> */}
+            <ChainList></ChainList> */}
+            <Connectwallet></Connectwallet>
             <button
               data-collapse-toggle='mobile-menu-2'
               type='button'

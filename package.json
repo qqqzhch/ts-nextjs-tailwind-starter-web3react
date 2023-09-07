@@ -18,8 +18,16 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@coinbase/wallet-sdk": "^3.7.1",
+    "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@reduxjs/toolkit": "^1.9.5",
+    "@web3-react/coinbase-wallet": "^8.2.2",
+    "@web3-react/core": "^8.2.2",
+    "@web3-react/metamask": "^8.2.3",
+    "@web3-react/network": "^8.2.2",
+    "@web3-react/walletconnect": "^8.2.2",
+    "@web3-react/walletconnect-v2": "^8.5.0",
     "clsx": "^1.2.1",
     "flowbite": "^1.8.1",
     "lucide-react": "^0.260.0",
@@ -67,5 +75,8 @@
     "**/*.{json,css,scss,md,webmanifest}": [
       "prettier -w"
     ]
+  },
+  "resolutions": {
+    "styled-components": "^5"
   }
 }
