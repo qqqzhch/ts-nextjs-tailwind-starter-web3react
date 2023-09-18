@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import * as React from 'react';
+import { Toaster } from 'react-hot-toast';
 
 import '@/styles/globals.css';
 
@@ -11,7 +12,6 @@ import ProviderStore from '@/store/Provider';
 import Search from '@/app/components/Search';
 import ProviderWeb3 from '@/app/ProviderWeb3';
 import { siteConfig } from '@/constant/config';
-
 // !STARTERCONF Change these default meta
 // !STARTERCONF Look at @/constant/config to change them
 export const metadata: Metadata = {
@@ -74,6 +74,7 @@ export default function RootLayout({
             <UnderlineLink href=''>Value Router</UnderlineLink>
           </footer>
         </ProviderWeb3>
+        <Toaster />
       </body>
     </html>
   );

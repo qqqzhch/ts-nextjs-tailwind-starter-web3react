@@ -1,5 +1,5 @@
 import { CoinbaseWallet } from '@web3-react/coinbase-wallet';
-import { GnosisSafe } from '@web3-react/gnosis-safe';
+// import { GnosisSafe } from '@web3-react/gnosis-safe';
 import { MetaMask } from '@web3-react/metamask';
 import { Network } from '@web3-react/network';
 import type { Connector } from '@web3-react/types';
@@ -12,6 +12,14 @@ export function getName(connector: Connector) {
   if (connector instanceof WalletConnect) return 'WalletConnect';
   if (connector instanceof CoinbaseWallet) return 'Coinbase Wallet';
   if (connector instanceof Network) return 'Network';
-  if (connector instanceof GnosisSafe) return 'Gnosis Safe';
+  // if (connector instanceof GnosisSafe) return 'Gnosis Safe';
   return 'Unknown';
+}
+
+export function cutOut(str: string, start: number, end: number) {
+  // console.log(str)
+  if (!str) return '';
+  const str1 = str.substr(0, start);
+  const str2 = str.substr(str.length - end);
+  return (str = str1 + '…' + str2);
 }

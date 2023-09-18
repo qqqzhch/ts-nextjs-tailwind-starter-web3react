@@ -1,9 +1,15 @@
 'use client';
 import { Dialog, Transition } from '@headlessui/react';
+import { ChevronDownIcon } from '@heroicons/react/24/solid';
 import { useWeb3React } from '@web3-react/core';
 import { Fragment, useState } from 'react';
+import { When } from 'react-if';
+
+import AccountInfo from '@/components/accountInfo';
 
 import { connectors } from '../../app/ProviderWeb3';
+
+import Metamask from '~/icon/metamask.svg';
 
 export default function MyModal() {
   const [isOpen, setIsOpen] = useState(true);
@@ -19,16 +25,32 @@ export default function MyModal() {
 
   return (
     <>
-      <div className='inset-0 flex items-center justify-center'>
+      <When condition={account !== undefined}>
+        <AccountInfo>
+          <div className='mr-1 hidden py-1 text-xl sm:block '>
+            {/* <Image alt='' className='h-12 w-12' src={Metamask}></Image> */}
+            <Metamask className=' h-4 w-4'></Metamask>
+          </div>
+          <div className='mr-1  flex  flex-col text-sm'>
+            {/* <div className="">{walletName}</div> */}
+            <div className=''>
+              {account?.substring(0, 4)}...{account?.substring(38, 42)}
+            </div>
+          </div>
+          <div className='py-1'>
+            <ChevronDownIcon className=' h-4 w-4'></ChevronDownIcon>
+          </div>
+        </AccountInfo>
+      </When>
+      <When condition={account === undefined}>
         <button
-          type='button'
           onClick={openModal}
-          className='rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75'
+          type='button'
+          className='bg-primary-700 hover:bg-primary-800 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 mr-2 rounded-lg px-4 py-2 text-sm font-medium text-white focus:outline-none focus:ring-4 lg:px-5 lg:py-2.5'
         >
-          x|{account}
+          Connect wallet
         </button>
-      </div>
-
+      </When>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as='div' className='relative z-10' onClose={closeModal}>
           <Transition.Child
