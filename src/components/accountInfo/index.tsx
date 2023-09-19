@@ -5,14 +5,32 @@ import React, { FC, useCallback } from 'react';
 import { useCookie } from 'react-use';
 
 import CopyAddressBtn from '../linkAndCopy/CopyAddressBtn';
+import { connectors } from '../../app/ProviderWeb3';
 import { cutOut } from '../../utils';
 
 type Props = {
   children?: React.ReactNode;
 };
 const AccountInfo: FC<Props> = ({ children }) => {
-  const { account, deactivate } = useWeb3React();
-  const [, , deleteCookie] = useCookie('walletIsConnectedTo');
+  const { account } = useWeb3React();
+  const [value, , deleteCookie] = useCookie('walletIsConnectedTo');
+  const deactivate = useCallback(() => {
+    if (value !== undefined && value !== null) {
+      connectors.forEach((item) => {
+        if (item[2].toLowerCase() && value.toLowerCase()) {
+          try {
+            if (item[0].deactivate) {
+              void item[0].deactivate();
+            } else {
+              item[0].resetState();
+            }
+          } catch (error) {
+            // console.error(error);
+          }
+        }
+      });
+    }
+  }, [value]);
 
   const onLogout = useCallback(() => {
     deleteCookie();

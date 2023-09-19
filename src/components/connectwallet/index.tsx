@@ -2,8 +2,9 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
 import { useWeb3React } from '@web3-react/core';
-import { Fragment, useState } from 'react';
+import { Fragment, useCallback, useEffect, useState } from 'react';
 import { When } from 'react-if';
+import { useCookie } from 'react-use';
 
 import AccountInfo from '@/components/accountInfo';
 
@@ -12,8 +13,9 @@ import { connectors } from '../../app/ProviderWeb3';
 import Metamask from '~/icon/metamask.svg';
 
 export default function MyModal() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const { account } = useWeb3React();
+  const [value, updateCookie] = useCookie('walletIsConnectedTo');
 
   function closeModal() {
     setIsOpen(false);
@@ -22,6 +24,31 @@ export default function MyModal() {
   function openModal() {
     setIsOpen(true);
   }
+  const Img = useCallback((name: string) => {
+    if (name.toLowerCase() == 'metamask')
+      return <Metamask className=' mr-3 h-6 w-6'></Metamask>;
+  }, []);
+  useEffect(() => {
+    if (value !== undefined && value !== null) {
+      connectors.forEach((item) => {
+        if (item[2].toLowerCase() && value.toLowerCase()) {
+          if (item[0].connectEagerly) {
+            try {
+              void item[0].connectEagerly();
+            } catch (error) {
+              console.error(error);
+            }
+          }
+        }
+      });
+    }
+  }, [value]);
+
+  // useEffect(() => {
+  //   void metaMask.connectEagerly().catch(() => {
+  //     console.debug('Failed to connect eagerly to metamask')
+  //   })
+  // }, [])
 
   return (
     <>
@@ -81,25 +108,33 @@ export default function MyModal() {
                     as='h3'
                     className='text-lg font-medium leading-6 text-gray-900'
                   >
-                    Payment successful
+                    Select Wallet
                   </Dialog.Title>
                   <div className='mt-2'>
                     <p className='text-sm text-gray-500'>
                       {connectors.map((item, index) => {
                         return (
-                          <div
-                            onClick={() => {
-                              item[0].activate(1);
-                            }}
-                            className=' m-4'
-                            key={index}
-                          >
-                            {item[2]}
+                          <div className='my-1 flex-1' key={index}>
+                            <button
+                              onClick={() => {
+                                updateCookie(item[2], {
+                                  expires: 30,
+                                  path: '/',
+                                });
+                                item[0].activate(1);
+                                closeModal();
+                              }}
+                              type='button'
+                              className='mb-2 mr-2 inline-flex w-full min-w-full items-center rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-center text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-600'
+                            >
+                              {Img(item[2])}
+                              {item[2]}
+                            </button>
                           </div>
                         );
                       })}
                     </p>
-                    <p>
+                    {/* <p>
                       {connectors.map((item, index) => {
                         return (
                           <div
@@ -118,17 +153,7 @@ export default function MyModal() {
                           </div>
                         );
                       })}
-                    </p>
-                  </div>
-
-                  <div className='mt-4'>
-                    <button
-                      type='button'
-                      className='inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
-                      onClick={closeModal}
-                    >
-                      Got it, thanks!
-                    </button>
+                    </p> */}
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

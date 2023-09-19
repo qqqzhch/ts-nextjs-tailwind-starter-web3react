@@ -22,12 +22,12 @@ export const Header: FC = () => {
           <a className='flex cursor-pointer items-center'>
             <Image
               src={Mobilelogo}
-              className='mr-3  h-12 w-12    '
+              className='mr-3 h-12  w-12 lg:hidden    '
               alt=' Logo'
             ></Image>
             <Image
               src={Logo}
-              className=' mr-3  hidden    w-32 sm:block    '
+              className=' mr-3  hidden    w-32 lg:block    '
               alt='logo'
             ></Image>
           </a>
