@@ -25,8 +25,8 @@ export const metadata: Metadata = {
   // ! copy to /favicon folder
   icons: {
     icon: '/favicon/favicon.ico',
-    shortcut: '/favicon/favicon-16x16.png',
-    apple: '/favicon/apple-touch-icon.png',
+    shortcut: '/favicon/smalllogo.png',
+    apple: '/favicon/smalllogo.png',
   },
   manifest: `/favicon/site.webmanifest`,
   openGraph: {
@@ -69,9 +69,11 @@ export default function RootLayout({
             </div>
           </section>
           <ProviderStore>{children}</ProviderStore>
-          <footer className='bottom-2 text-gray-700'>
+          <footer className='bottom-2 mx-auto flex max-w-screen-xl justify-center text-gray-700'>
             © {new Date().getFullYear()} By{' '}
-            <UnderlineLink href=''>Value Router</UnderlineLink>
+            <UnderlineLink href='https://www.valuerouter.com/'>
+              Value Router
+            </UnderlineLink>
           </footer>
         </ProviderWeb3>
         <Toaster />

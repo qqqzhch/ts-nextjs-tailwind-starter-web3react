@@ -1,12 +1,14 @@
-import { Bars3Icon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import { FC } from 'react';
 import 'flowbite';
+
+import MobileMenu from '@/components/header/mobileMenu';
 
 import Connectwallet from '../connectwallet/index';
 
 import Mobilelogo from '~/images/smalllogo.png';
 import Logo from '~/images/ValueRouter.png';
+
 // import ChainList from '../chainList/index'
 // import Noticeinfo from '../noticeinfo'
 
@@ -35,15 +37,7 @@ export const Header: FC = () => {
             {/* <Noticeinfo></Noticeinfo>
             <ChainList></ChainList> */}
             <Connectwallet></Connectwallet>
-            <button
-              data-collapse-toggle='mobile-menu-2'
-              type='button'
-              className='ml-1 inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 lg:hidden'
-              aria-controls='mobile-menu-2'
-              aria-expanded='false'
-            >
-              <Bars3Icon className=' h-6 w-6'></Bars3Icon>
-            </button>
+            <MobileMenu></MobileMenu>
           </div>
           <div
             className='hidden  w-full flex-1 items-center justify-between sm:ml-8 lg:order-1 lg:flex lg:w-auto'
@@ -55,10 +49,10 @@ export const Header: FC = () => {
                     </li> */}
               <li>
                 <a
-                  href='#'
+                  href='https://app.valuerouter.com/'
                   className='lg:hover:text-primary-700 block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:border-0 lg:p-0 lg:hover:bg-transparent lg:dark:hover:bg-transparent lg:dark:hover:text-white'
                 >
-                  Doc
+                  Route
                 </a>
               </li>
             </ul>
