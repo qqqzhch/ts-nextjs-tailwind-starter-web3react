@@ -1,10 +1,11 @@
 'use client';
 import { Dialog, Transition } from '@headlessui/react';
 import { Bars3Icon } from '@heroicons/react/24/solid';
+import Link from 'next/link';
 import { Fragment, useState } from 'react';
 
 export default function MobileMenu() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {
     setIsOpen(false);
@@ -62,12 +63,12 @@ export default function MobileMenu() {
                         <a  onClick={()=>{Navigate('/swap')}}  className="block cursor-pointer py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white" aria-current="page">USDC Router</a>
                     </li> */}
                       <li>
-                        <a
-                          href='https://app.valuerouter.com/'
+                        <Link
+                          href='/'
                           className='lg:hover:text-primary-700 block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:border-0 lg:p-0 lg:hover:bg-transparent lg:dark:hover:bg-transparent lg:dark:hover:text-white'
                         >
-                          Route
-                        </a>
+                          Home
+                        </Link>
                       </li>
                     </ul>
                   </div>

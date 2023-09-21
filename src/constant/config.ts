@@ -1,6 +1,6 @@
 export const siteConfig = {
-  title: 'Value Router Explorer',
-  description: 'Value Router Explorer',
+  title: 'web3 demo',
+  description: 'web3 demo',
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
-  url: 'https://www.valuerouter.com/',
+  url: '',
 };

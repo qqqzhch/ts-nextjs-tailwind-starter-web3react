@@ -9,7 +9,6 @@ import UnderlineLink from '@/components/links/UnderlineLink';
 
 import ProviderStore from '@/store/Provider';
 
-import Search from '@/app/components/Search';
 import ProviderWeb3 from '@/app/ProviderWeb3';
 import { siteConfig } from '@/constant/config';
 // !STARTERCONF Change these default meta
@@ -63,17 +62,14 @@ export default function RootLayout({
       <body>
         <ProviderWeb3>
           <Header></Header>
-          <section className=' to-[#c2e9fb mb-14 bg-gradient-to-b from-[#a1c4fd]'>
-            <div className='layout relative flex   flex-col  py-12'>
-              <Search></Search>
-            </div>
+          <section className=' to-[#c2e9fb  bg-gradient-to-t from-[#a1c4fd]'>
+            <ProviderStore>{children}</ProviderStore>
           </section>
-          <ProviderStore>{children}</ProviderStore>
-          <footer className='bottom-2 mx-auto flex max-w-screen-xl justify-center text-gray-700'>
-            © {new Date().getFullYear()} By{' '}
-            <UnderlineLink href='https://www.valuerouter.com/'>
-              Value Router
-            </UnderlineLink>
+          <footer className='bottom-2 mx-auto flex   min-h-[100px]   items-center justify-center bg-[#a1c4fc]  text-black'>
+            <div>
+              © {new Date().getFullYear()} By{' '}
+              <UnderlineLink href='/'>web demo</UnderlineLink>
+            </div>
           </footer>
         </ProviderWeb3>
         <Toaster />
