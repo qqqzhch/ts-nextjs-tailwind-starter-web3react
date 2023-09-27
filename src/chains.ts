@@ -55,11 +55,11 @@ export function getAddChainParameters(
 const getInfuraUrlFor = (network: string) =>
   process.env.infuraKey
     ? `https://${network}.infura.io/v3/${process.env.infuraKey}`
-    : undefined;
+    : '';
 const getAlchemyUrlFor = (network: string) =>
   process.env.alchemyKey
     ? `https://${network}.alchemyapi.io/v2/${process.env.alchemyKey}`
-    : undefined;
+    : '';
 
 type ChainConfig = {
   [chainId: number]: BasicChainInformation | ExtendedChainInformation;

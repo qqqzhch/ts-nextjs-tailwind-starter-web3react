@@ -21,6 +21,17 @@ export const connectors: [
   // [network, networkHooks, 'network'],
 ];
 
+export const connectors2: [
+  MetaMask | WalletConnect | WalletConnectV2 | CoinbaseWallet | Network,
+  Web3ReactHooks
+][] = [
+  [metaMask, metaMaskHooks],
+  // [walletConnect, walletConnectHooks, 'walletConnect'],
+  // [walletConnectV2, walletConnectV2Hooks, 'walletConnectV2'],
+  // [coinbaseWallet, coinbaseWalletHooks, 'coinbaseWallet'],
+  // [network, networkHooks, 'network'],
+];
+
 // function Child() {
 //   const { connector } = useWeb3React();
 //   console.log(`Priority Connector is: ${getName(connector)}`);
@@ -33,6 +44,6 @@ export default function ProviderWeb3({
   children: React.ReactNode;
 }) {
   return (
-    <Web3ReactProvider connectors={connectors}>{children}</Web3ReactProvider>
+    <Web3ReactProvider connectors={connectors2}>{children}</Web3ReactProvider>
   );
 }
