@@ -6,12 +6,15 @@ import { MAINNET_CHAINS } from '../chains';
 
 const [mainnet, ...optionalChains] = Object.keys(MAINNET_CHAINS).map(Number);
 
+const NEXT_PUBLIC_WalletConnectProjectId =
+  process.env['NEXT_PUBLIC_WalletConnectProjectId'] || '';
+
 export const [walletConnectV2, hooks] = initializeConnector<WalletConnectV2>(
   (actions) =>
     new WalletConnectV2({
       actions,
       options: {
-        projectId: process.env['NEXT_PUBLIC_WalletConnectProjectId'],
+        projectId: NEXT_PUBLIC_WalletConnectProjectId,
         chains: [mainnet],
         optionalChains: [mainnet, ...optionalChains],
         showQrModal: true,
